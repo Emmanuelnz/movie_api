@@ -46,7 +46,7 @@ app.get('/movies', (req, res) => {
 });
 
 app.get('/documentation', (req, res) => {
-  res.sendFile('/movie_api/documentation.html');
+  res.sendFile('/movie_api/public/documentation.html');
 });
 
 // Error handling
