@@ -5,19 +5,116 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="../styles.css">
     <title>Documentation</title>
   </head>
 
   <body>
 
     <!-- Title -->
-    <h1>Documentation Page</h1>
+    <h1 class="pg-title">Documentation Page</h1>
 
     <!-- Objective/App info -->
-    <p>
-      Build the server-side component of a “movies” web application. The application will give users information about different
+    <p class="pg-sub">
+      Objective: Build the server-side component of a “movies” web application. The application will give users information about different
       movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
     </p>
+
+    <table>
+      <thead class="docpg-thead">
+        <tr>
+          <th scope="col">HTTP Method</th>
+          <th scope="col">Request</th>
+          <th scope="col">URL</th>
+          <th scope="col">Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>Gets a list of all movies</td>
+          <td>/movies</td>
+          <td>A JSON with data about all the movies </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>Gets data about a single movie by title (ex. "The Batman")</td>
+          <td>/movies/{title}</td>
+          <td>A JSON with data about a single movie(Data- Movie Title, Description, Directors,Genre)<br> Ex.{ <br>
+            Title: 'Batman vs Robin', <br>
+            Description: "Damian Wayne has a hard time accepting his father's no-killing rule, and soon starts to believe his destiny lies within a secret society.",<br>
+            Directors: { <br>
+              Name: 'Jay Oliva',<br>
+              Bio: 'Jay Oliva is an American storyboard artist, film producer and animated film director working at Lex and Otis animation studio.',<br>
+              Born: '1976, USA',<br>
+              Death: 'Still Alive'
+            },<br>
+            Genre: {<br>
+              Name: 'Action',<br>
+              Description: 'The action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself.'
+            }<br>
+          }</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>Gets data about a genre by genre name (ex."Action")</td>
+          <td>/movies/{genre}/{genre name}</td>
+          <td>A JSON with data about a genre (data- Genre Name, Description) <br> Ex.Genre: {<br>
+            Name: 'Action',<br>
+            Description: 'The action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself.'
+          } </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>Gets data about a director by name (ex. "Sam Raimi")</td>
+          <td>/movies/{directors}/{director name}</td>
+          <td>A JSON with data about the directors (Data- Name,Short Bio, Birth,Death)<br>Directors: { <br>
+            Name: 'Jay Oliva',<br>
+            Bio: 'Jay Oliva is an American storyboard artist, film producer and animated film director working at Lex and Otis animation studio.',<br>
+            Born: '1976, USA',<br>
+            Death: 'Still Alive'
+          } </td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>Register a new user</td>
+          <td>/users</td>
+          <td>A JSON with data about the newly added user (Data-Name, favoriteMovies, id)
+            {<br>"name": "Leo",<br>
+            "favoriteMovies": [{empty array/list}],<br>
+            "id": "b030cd61-5755-41b4-ace8-1f037cca818c"<br>}
+          </td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>Updates user info (ex. username)</td>
+          <td>/users/{name}</td>
+          <td> A JSON with data about the users updated info (id, updated Name, favoriteMovies list) {<br>
+            "id": 1,<br>
+            "name": "Sam fisher",<br>
+            "favoriteMovies": [{empty array/list}]<br>}
+          </td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>Adds movie to user's favorite movie list</td>
+          <td>/users/{id}/{movie title}</td>
+          <td>Message stating "{movieTitle} has been added to user {id}'s favoriteMovies list"</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>Removes movie from user's favorite movie list</td>
+          <td>/users/{id}/{movie title}</td>
+          <td>Message stating "{movieTitle} has been removed from user {id}'s favoriteMovies list"</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>Delete account/deregister current user</td>
+          <td>/users/{id}</td>
+          <td>Message stating "User has been deleted"</td>
+        </tr>
+      </tbody>
+    </table>
 
   </body>
 
