@@ -16,6 +16,11 @@ td {
   padding: 20px;
 }
 
+body {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
 /* page title  */
 .pg-title {
   text-align: center;
