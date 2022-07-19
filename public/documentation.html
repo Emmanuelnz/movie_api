@@ -12,7 +12,7 @@
   <body>
 
     <!-- Title -->
-    <h1 class="pg-title">Documentation Page</h1>
+    <h1 class="pg-title">Documentation</h1>
 
     <!-- Objective/App info -->
     <p class="pg-sub">
@@ -33,33 +33,49 @@
         <tr>
           <td>GET</td>
           <td>Gets a list of all movies</td>
-          <td>/movies</td>
-          <td>A JSON with data about all the movies </td>
+          <td>/Movies</td>
+          <td>A JSON with data about all the movies. Ex. format (<br>{<br>
+            "Genre": {<br>
+              "Name": "sample text",<br>
+              "Description": " sample text"<br>
+            },<br>
+            "Directors": {
+              "Name": "sample text",<br>
+              "Bio": "sample text"<br>
+            },<br>
+            "_id": "sample text",<br>
+            "Title": "sample text",<br>
+            "Description": "sample text",<br>
+            "ImagePath": "url"
+            })
+        </td>
         </tr>
         <tr>
           <td>GET</td>
           <td>Gets data about a single movie by title (ex. "The Batman")</td>
-          <td>/movies/{title}</td>
-          <td>A JSON with data about a single movie(Data- Movie Title, Description, Directors,Genre)<br> Ex.{ <br>
-            Title: 'Batman vs Robin', <br>
-            Description: "Damian Wayne has a hard time accepting his father's no-killing rule, and soon starts to believe his destiny lies within a secret society.",<br>
-            Directors: { <br>
-              Name: 'Jay Oliva',<br>
-              Bio: 'Jay Oliva is an American storyboard artist, film producer and animated film director working at Lex and Otis animation studio.',<br>
-              Born: '1976, USA',<br>
-              Death: 'Still Alive'
+          <td>/Movies/{Title}</td>
+          <td>A JSON with data about a single movie (Data- Movie Title, Description, Directors,Genre). Ex.<br>   {<br>
+            "Genre": {<br>
+              "Name": "Adventure",<br>
+              "Description": "The adventure genre consists consist of protagonist/protagonists going on an epic journey, either personally or geographically. Often the protagonist has/have a mission and face/faces many obstacles in their way."<br>
             },<br>
-            Genre: {<br>
-              Name: 'Action',<br>
-              Description: 'The action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself.'
-            }<br>
-          }</td>
+            "Directors": {<br>
+              "Name": "Matt Reeves",<br>
+              "Bio": "Matt Reeves (born April 27, 1966) is an American film director, producer and screenwriter. He first gained recognition for the WB drama series Felicity (1998–2002), which he co-created with J. J. Abrams. Reeves came to widespread attention for directing the hit monster film Cloverfield (2008).",<br>
+              "Born": "April 27, 1966 in Rockville Center, New York, USA"<br>
+            },<br>
+            "_id": "62cfc1a643393b53a493f132",<br>
+            "Title": "The Batman",<br>
+            "Description": "Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues. As the evidence begins to lead closer to home and the scale of the perpetrator's plans become clear, he must forge new relationships, unmask the culprit and bring justice to the abuse of power and corruption that has long plagued the metropolis.",<br>
+            "ImagePath": "https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_.jpg"<br>
+          }
+        </td>
         </tr>
         <tr>
           <td>GET</td>
           <td>Gets data about a genre by genre name (ex."Action")</td>
           <td>/movies/{genre}/{genre name}</td>
-          <td>A JSON with data about a genre (data- Genre Name, Description) <br> Ex.Genre: {<br>
+          <td>A JSON with data about a genre (data- Genre Name, Description). <br> Ex. <br> Genre: {<br>
             Name: 'Action',<br>
             Description: 'The action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself.'
           } </td>
@@ -68,50 +84,76 @@
           <td>GET</td>
           <td>Gets data about a director by name (ex. "Sam Raimi")</td>
           <td>/movies/{directors}/{director name}</td>
-          <td>A JSON with data about the directors (Data- Name,Short Bio, Birth,Death)<br>Directors: { <br>
+          <td>A JSON with data about the directors (Data- Name,Short Bio, Birth,Death). Ex.<br>Directors: { <br>
             Name: 'Jay Oliva',<br>
             Bio: 'Jay Oliva is an American storyboard artist, film producer and animated film director working at Lex and Otis animation studio.',<br>
             Born: '1976, USA',<br>
-            Death: 'Still Alive'
-          } </td>
+          }
+        </td>
         </tr>
         <tr>
           <td>POST</td>
           <td>Register a new user</td>
           <td>/users</td>
-          <td>A JSON with data about the newly added user (Data-Name, favoriteMovies, id)
-            {<br>"name": "Leo",<br>
-            "favoriteMovies": [{empty array/list}],<br>
-            "id": "b030cd61-5755-41b4-ace8-1f037cca818c"<br>}
+          <td>A JSON with data about the newly added user (Name, favoriteMovies, id). Ex.
+            <br> {<br>
+              "_id": "62d08e717e75c65b52db36b2",<br>
+              "username": "sample name",<br>
+              "password": "sample password",<br>
+              "email": "sample email",<br>
+              "Birthday": "sample birthdate",<br>
+              "favoriteMovies": [users favorite movies go in here]<br>
           </td>
         </tr>
         <tr>
           <td>PUT</td>
           <td>Updates user info (ex. username)</td>
-          <td>/users/{name}</td>
-          <td> A JSON with data about the users updated info (id, updated Name, favoriteMovies list) {<br>
-            "id": 1,<br>
-            "name": "Sam fisher",<br>
-            "favoriteMovies": [{empty array/list}]<br>}
+          <td>/users/{Username}</td>
+          <td> A JSON with data about the users updated info (id, updated Username,Password, email, birthdate, favoriteMovies list). Ex. <br>
+            {<br>
+            "_id": "sample id",<br>
+            "username": "sample name",<br>
+            "password": "sample password",<br>
+            "email": "sample password",<br>
+            "Birthday": "sample birthdate",<br>
+            "favoriteMovies": []<br>
+            }
           </td>
         </tr>
         <tr>
           <td>POST</td>
           <td>Adds movie to user's favorite movie list</td>
-          <td>/users/{id}/{movie title}</td>
-          <td>Message stating "{movieTitle} has been added to user {id}'s favoriteMovies list"</td>
+          <td>/users/{Username}/Movies/{MovieID}</td>
+          <td>A JSON with the movie's ID in the user's favoriteMovies Array/List. Ex. <br>
+            {<br>
+            "_id": "sample id",<br>
+            "username": "sample name",<br>
+            "password": "sample password",<br>
+            "email": "sample password",<br>
+            "Birthday": "sample birthdate",<br>
+            "favoriteMovies": [MovieID would go here]<br>
+            }</td>
         </tr>
         <tr>
           <td>DELETE</td>
           <td>Removes movie from user's favorite movie list</td>
-          <td>/users/{id}/{movie title}</td>
-          <td>Message stating "{movieTitle} has been removed from user {id}'s favoriteMovies list"</td>
+          <td>/users/{Username}/Movies/{MovieID}</td>
+          <td>A JSON with the updated favoriteMovies list Ex.<br>
+            {<br>
+            "_id": "sample id",<br>
+            "username": "sample name",<br>
+            "password": "sample password",<br>
+            "email": "sample password",<br>
+            "Birthday": "sample birthdate",<br>
+            "favoriteMovies": [The Movie's ID would no longer be here]<br>
+            }
+          </td>
         </tr>
         <tr>
           <td>DELETE</td>
           <td>Delete account/deregister current user</td>
           <td>/users/{id}</td>
-          <td>Message stating "User has been deleted"</td>
+          <td>Message stating " {Username} was deleted"</td>
         </tr>
       </tbody>
     </table>
