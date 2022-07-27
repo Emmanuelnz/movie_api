@@ -17,7 +17,12 @@
     <!-- Objective/App info -->
     <p class="pg-sub">
       Objective: Build the server-side component of a “movies” web application. The application will give users information about different
-      movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
+      movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies. For security reasons these endpoints can only be accessed through a generated token(with the exception of login). To generate a token using Postman follow these steps.<br>
+      1. Visit the login endpoint <br>
+      2. Click on "Params" located under the the url <br>
+      3. Under "Key" enter "Username" then to the right, under "Value" enter your account username. ex. "Jason2321". <br>
+      4. Keeping both inputs you entered in step 3, repeat the process for password. Under "Key" enter "Password" then to the right, under "Value" enter the password associated with your account. ex."ultrasecretpassword". <br>
+      This will generate a token for your session. To use the token simply click the "Authorization" (its right next to "Params") and select "Bearer Token" from the drop down menu. Copy and paste your token from the login page and you're set! Make sure to repeat this process with all endpoints before testing or it won't allow you to view the content. 
     </p>
 
     <table>
