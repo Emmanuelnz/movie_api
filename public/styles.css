@@ -23,12 +23,12 @@ body {
 
 /* page title  */
 .pg-title {
-  text-align: center;
+  text-align: left;
 }
 
 /* sub text, right under title */
 .pg-sub {
-  text-align: center;
+  text-align: left;
 }
 
 .docpg-thead {
