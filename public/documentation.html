@@ -17,7 +17,8 @@
     <!-- Objective/App info -->
     <p class="pg-sub">
       Objective: Build the server-side component of a “movies” web application. The application will give users information about different
-      movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies. For security reasons these endpoints can only be accessed through a generated token(with the exception of login). To generate a token using Postman follow these steps.<br>
+      movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies. For security reasons these endpoints can only be accessed through a generated token(with the exception of login and New user). To generate a token using Postman follow these steps.<br>
+      P.S If you haven't, create an account then proceed with the following steps. <br>
       1. Visit the login endpoint <br>
       2. Click on "Params" located under the the url <br>
       3. Under "Key" enter "Username" then to the right, under "Value" enter your account username. ex. "Jason2321". <br>
@@ -103,8 +104,8 @@
           <td>A JSON with data about the newly added user (Name, favoriteMovies, id). Ex.
             <br> {<br>
               "_id": "62d08e717e75c65b52db36b2",<br>
-              "username": "sample name",<br>
-              "password": "sample password",<br>
+              "username": "sample name (must be at least 5 characters long",<br>
+              "password": "sample password (non-alphnumeric characters are not allowed)",<br>
               "email": "sample email",<br>
               "Birthday": "sample birthdate",<br>
               "favoriteMovies": [users favorite movies go in here]<br>
