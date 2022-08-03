@@ -208,7 +208,11 @@ app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) =>
 app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({ Title: req.params.Title })
     .then((movies) => {
-      res.json(movies);
+      if (!movies) {
+        res.status(404).send(req.params.Title + 'does not exist');
+      } else {
+        res.json(movies);
+      }
     })
     .catch((err) => {
       console.error(err);
