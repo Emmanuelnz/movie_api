@@ -8,9 +8,10 @@ let Users = Models.User,
   ExtractJWT = passportJWT.ExtractJwt;
 
 // Login validation 
-passport.use(new LocalStrategy({
+passport.use(new LocalStrategy(
+{
   usernameField: 'Username',
-  passwordField: 'Password'
+  passwordField: 'Password',
 }, (username, password, callback) => {
   console.log(username + '  ' + password);
   Users.findOne({ Username: username }, (error, user) => {
@@ -34,7 +35,8 @@ passport.use(new LocalStrategy({
   });
 }));
 
-passport.use(new JWTStrategy({
+passport.use(new JWTStrategy(
+{
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: 'your_jwt_secret'
 }, (jwtPayload, callback) => {
@@ -43,6 +45,6 @@ passport.use(new JWTStrategy({
       return callback(null, user);
     })
     .catch((error) => {
-      return callback(error)
+      return callback(error);
     });
 }));
