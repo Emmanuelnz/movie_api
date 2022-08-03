@@ -206,7 +206,7 @@ app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) =>
 
 // GET - Data from a single movie
 app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Movies.find({ Title: req.params.Title })
+  Movies.findOne({ Title: req.params.Title })
     .then((movies) => {
       res.json(movies);
     })
