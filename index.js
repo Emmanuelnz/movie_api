@@ -225,7 +225,11 @@ app.get('/movies/:Title', passport.authenticate('jwt', {session: false}), (req, 
 app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({ 'Genre.Name': req.params.Name})
   .then((movie) => {
-    res.json(movie.Genre);
+    if (!movie) {
+      res.status(404).send(req.params.Name + ' does not exist ');
+    } else {
+      res.json(movie.Genre);
+    }
   })
   .catch((err) => {
     console.error(err);
@@ -237,6 +241,11 @@ app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false}), (
 app.get('/movies/Directors/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({ 'Directors.Name': req.params.Name})
   .then((movie) => {
+    if (!movie) {
+      res.status(404).send(req.params.Name + ' does not exist ');
+    } else {
+      res.json(movie.Directors);
+    }
     res.json(movie.Directors);
   })
   .catch((err) => {
