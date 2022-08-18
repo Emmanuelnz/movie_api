@@ -10,7 +10,7 @@ const cors = require('cors');
 // All origins
 app.use(cors());
 
-// Specific origins
+// Specific/limited origins
 // let allowedOrigins = ['http://localhost:8080',];
 // app.use(cors({
 // origin: (origin, callback) => {
@@ -167,7 +167,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {sessi
   });
 });
 
-// DELETE - Movie from user's list
+// DELETE - Remove movie from user's list
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $pull: { favoriteMovies: req.params.MovieID }
@@ -196,8 +196,8 @@ app.get('/users', passport.authenticate('jwt', {session: false}), (req, res) => 
 });
 
 // GET - List of all movies
-// temp removal - passport.authenticate('jwt', {session: false}),
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}),
+(req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
