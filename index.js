@@ -1,15 +1,4 @@
-/* const express = require('express'),
-  app = express(),
-  bodyParser = require('body-parser'),
-  uuid = require('uuid');
-
-const {check, validationResult} = require('express-validator');
-
-const cors = require('cors');
-
-// All origins
-app.use(cors());
-
+/* 
 // Specific/limited origins
 // let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixfr.herokuapp.com/' ];
 // app.use(cors({
@@ -23,28 +12,11 @@ app.use(cors());
 // }
 // }));
 
-let auth = require('./auth')(app);
+
 
 const passport = require('passport');
 require('./passport');
-
-// Logs requests
-const morgan = require('morgan');
-  app.use(morgan('common'));
-  app.use(express.static('public'));
-  app.use(bodyParser.json());
-
-const mongoose = require('mongoose');
-const Models = require('./models.js');
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
-// Local connection
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Online connection
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); */
+*/
 
 // Imports
 const express = require('express'),
@@ -53,6 +25,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   passport = require('passport'),
   cors = require('cors');
+  require('./passport');
 
 const app = express();
 const { check, validationResult } = require('express-validator');
@@ -76,6 +49,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // ====================================== Routing Endpoints ======================================
+
+// POST - login 
+let auth = require('./auth')(app);
 
 // GET - Home page
 app.get('/', (req, res) => {
