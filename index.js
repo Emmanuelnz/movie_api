@@ -1,4 +1,4 @@
-const express = require('express'),
+/* const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
   uuid = require('uuid');
@@ -44,7 +44,44 @@ const Users = Models.User;
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Online connection
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); */
+
+// Imports
+const express = require('express'),
+  morgan = require('morgan'),
+  //  uuid = require('uuid'),
+  bodyParser = require('body-parser'),
+  passport = require('passport'),
+  cors = require('cors');
+
+const app = express();
+const { check, validationResult } = require('express-validator');
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const Movies = Models.Movie;
+const Users = Models.User;
+
+// Local connection to Database
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { 
+//   useNewUrlParser: true, 
+//   useUnifiedTopology: true 
+// });
+
+// Online/Remote connection to Database
+mongoose.connect(process.env.CONNECTION_URI, { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+});
+
+// ====================================== Middleware ======================================
+
+app.use(cors());
+app.use(morgan('common'));
+app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// ====================================== Routing Endpoints ======================================
 
 // GET - Home page
 app.get('/', (req, res) => {
