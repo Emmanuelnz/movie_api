@@ -261,10 +261,10 @@ app.get('/movies/Directors/:Name', passport.authenticate('jwt', {session: false}
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Oh no, Error!');
+  res.status(500).send("Whoops, Something's not right.");
 });
 
-// Listen for request
+// Listen for requests
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
  console.log('Listening on Port ' + port);
