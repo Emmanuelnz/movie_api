@@ -61,17 +61,11 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// Local connection to Database
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { 
-//   useNewUrlParser: true, 
-//   useUnifiedTopology: true 
-// });
+// Local connection
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Online/Remote connection to Database
-mongoose.connect(process.env.CONNECTION_URI, { 
-  useNewUrlParser: true,
-  useUnifiedTopology: true 
-});
+// Online connection
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // ====================================== Middleware ======================================
 
