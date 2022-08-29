@@ -202,7 +202,7 @@ app.get('/users', passport.authenticate('jwt', {session: false}), (req, res) => 
 
 // temp rem - passport.authenticate('jwt', {session: false}),
 // GET - List of all movies
-app.get('/movies',
+app.get('/movies', passport.authenticate('jwt', {session: false}),
 (req, res) => {
   Movies.find()
     .then((movies) => {
