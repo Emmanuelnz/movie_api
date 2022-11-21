@@ -4,7 +4,13 @@ const jwt = require('jsonwebtoken'),
   passport = require('passport');
 
   require('./passport');
-
+  // Generate access token
+  /**
+   * Generate access token
+   * @param user
+   * @returns User, JWT
+   * @function generateJWTToken
+   */
   let generateJWTToken = (user) => {
     return jwt.sign(user, jwtSecret, {
       subject: user.Username, // Username being enoded in JWT
@@ -14,6 +20,14 @@ const jwt = require('jsonwebtoken'),
   }
 
 // POST login
+/**
+ * Handles user login and generating a JWT token on login
+ * @name postLogin
+ * @kind function
+ * @param router
+ * @returns user with JWT token
+ * @requires passport
+ */
 module.exports = (router) => {
   router.post('/login', (req, res) => {
     passport.authenticate('local', { session: false }, (error, user, info) => {
