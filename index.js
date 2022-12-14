@@ -1,16 +1,16 @@
 /* 
-// Specific/limited origins
-// let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixfr.herokuapp.com/' ];
-// app.use(cors({
-// origin: (origin, callback) => {
-//   if(!origin) return callback(null, true);
-//   if(allowedOrigins.indexOf(origin) === -1){
-//     let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-//     return callback(new Error(message ), false);
-//   }
-//   return callback(null, true);
-// }
-// }));
+Specific/limited origins
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixfr.herokuapp.com/' ];
+app.use(cors({
+origin: (origin, callback) => {
+  if(!origin) return callback(null, true);
+  if(allowedOrigins.indexOf(origin) === -1){
+    let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+    return callback(new Error(message ), false);
+  }
+  return callback(null, true);
+}
+}));
 
 const passport = require('passport');
 require('./passport');
@@ -33,10 +33,10 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Local connection
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Online connection
-// mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // ====================================== Middleware ======================================
 
