@@ -128,9 +128,9 @@ app.get('/movies', passport.authenticate('jwt', {session: false}),
  * @returns array of movies
  * @requires passport
  */
-app.get('/movies/filter', passport.authenticate('jwt', {session: false}),
+app.get('/movies/filter/genre/:Name', passport.authenticate('jwt', {session: false}),
 (req, res) => {
-  Movies.find()
+  Movies.find({ 'Genre.Name': req.params.Name})
     .then((movies) => {
       res.status(201).json(movies);
     })
